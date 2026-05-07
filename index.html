@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АЙБАНДАР</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #111;
+            background-size: 300px;
+            background-repeat: repeat;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
 
+        nav {
+            background-color: rgba(0,0,0,0.8);
+            padding: 1em;
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            top: 0;
+        }
+
+        h1 { margin: 0; }
+
+        #cta-btn, #stop-btn {
+            padding: 10px 20px;
+            cursor: pointer;
+            position: absolute;
+            font-size: 1em;
+            border-radius: 6px;
+            border: none;
+        }
+
+        #cta-btn {
+            background-color: white;
+            color: black;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #stop-btn {
+            background-color: red;
+            color: white;
+            display: none;
+        }
+
+        .meme-text {
+            position: absolute;
+            font-weight: bold;
+            pointer-events: none;
+            animation: fadeOut 2.5s forwards;
+            text-shadow: 2px 2px 4px black;
+        }
+
+        @keyframes fadeOut {
+            0%   { opacity: 1; transform: scale(1); }
+            80%  { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.8); }
+        }
+
+        #year-p {
+            position: absolute;
+            bottom: 20px;
+            text-shadow: 1px 1px 3px black;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Нурэл жетим жана Нурэлес котогому, спацалльный сайт.</h1>
+    </nav>
+
+    <button id="cta-btn">Бас кнопканы айбан</button>
+    <button id="stop-btn">Очур далбана айбан</button>
+    <p id="year-p">© <span id="year"></span> Мой коток</p>
+
+    <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        const audio = new Audio('https://www.image2url.com/r2/default/files/1778187384787-80de0564-93fe-4519-8203-683e809ff5d6.mp3');
+        audio.preload = 'auto';
+
+        const messages = [
+            'ЛОХ', 'ЛОШОК!', 'Немщь',
+            'айбан', 'коток',
+            'гей', 'порно звезда', 'ХА-ХА-ХА!',
+            'МОЙ КОТОК ТЕБЯ ПОЙМАЛ!', 'осель',
+            'ХАХАХАХА!', 'олень', 'козел'
+        ];
+
+        const btn = document.getElementById('cta-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        let soundInterval = null;
+        let textInterval = null;
+
+        const randomPos = (el) => {
+            const maxX = window.innerWidth - el.offsetWidth - 20;
+            const maxY = window.innerHeight - el.offsetHeight - 20;
+            el.style.left = Math.max(10, Math.random() * maxX) + 'px';
+            el.style.top  = Math.max(60, Math.random() * maxY) + 'px';
+        };
+
+        const spawnText = () => {
+            const el = document.createElement('div');
+            el.className = 'meme-text';
+            el.textContent = messages[Math.floor(Math.random() * messages.length)];
+            el.style.left = Math.random() * (window.innerWidth - 250) + 'px';
+            el.style.top  = Math.random() * (window.innerHeight - 60) + 'px';
+            el.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+            el.style.fontSize = (1 + Math.random() * 2) + 'em';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 2500);
+        };
+
+        stopBtn.addEventListener('mouseover', () => randomPos(stopBtn));
+        stopBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            randomPos(stopBtn);
+        });
+
+        btn.addEventListener('click', () => {
+            btn.style.display = 'none';
+            stopBtn.style.display = 'block';
+            randomPos(stopBtn);
+
+            audio.currentTime = 0;
+            audio.play();
+
+            soundInterval = setInterval(() => {
+                audio.currentTime = 0;
+                audio.play();
+            }, 3000);
+
+            textInterval = setInterval(() => spawnText(), 200);
+        });
+
+        stopBtn.addEventListener('click', () => {
+            clearInterval(soundInterval);
+            clearInterval(textInterval);
+            soundInterval = null;
+            textInterval = null;
+            audio.pause();
+            audio.currentTime = 0;
+            stopBtn.style.display = 'none';
+            btn.style.display = 'block';
+        }, { once: true });
+    </script>
+</body>
+</html>
