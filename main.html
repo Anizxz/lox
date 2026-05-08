@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter Pack Site</title>
+    <style>
+        body {
+            background: linear-gradient(150deg, #9824bb 0%, #6609c3 100%);
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .card {
+            width: 100%;
+            padding: 100px 0;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            size: 100dvb;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        text h1 {
+            font-size: 3em;
+            color: #4dff00;
+            margin: 0;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: #fff;
+            background-color: #4dff00;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(77, 255, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            
+        }
+
+        button:hover {
+            background-color: #51c72a;
+            box-shadow: 0 8px 20px rgba(77, 255, 0, 0.5);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        button:active {
+            background-color: #33cc00;
+            box-shadow: 0 4px 15px rgba(77, 255, 0, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #year-p {
+            position: absolute;
+            bottom: 20px;
+            text-shadow: 1px 1px 3px black;
+        }
+
+        author p {
+            font-size: 1em;
+            color: #bbff00;
+            margin: 0;
+            text-shadow: 1px 1px 3px black;
+            top: 30%;
+            left: 0%;
+            right: 0%;
+            position: absolute;
+            text-align: center;
+        }
+
+        footer {
+            width: 100%;
+            padding: 100px 0;
+            size: 100dvb;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: absolute;
+            bottom: 140px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <text>
+            <h1>НЕМОЩЬ</h1>
+        </text>
+    </header>
+    <main class="card">
+        <button>БАС</button>
+    </main>
+    <footer>
+        <author>
+            <p id="year-p">© <span id="year"></span> Мой коток</p>
+        </author>
+    </footer>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', () => {
+            window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+            setTimeout(() => {
+                alert('Затролен ,папхапхахпхахпхапхахпхап');
+            }, 2000);
+        });
+
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
