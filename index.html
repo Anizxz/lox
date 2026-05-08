@@ -9,15 +9,20 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
-            background-color: #111;
-            background-size: 300px;
-            background-repeat: repeat;
+            align-items: center;
             color: white;
             font-family: Arial, sans-serif;
             overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         nav {
@@ -41,8 +46,9 @@
         }
 
         #cta-btn {
-            background-color: white;
-            color: black;
+            background: linear-gradient(45deg, #ff00cc, #3333ff);
+            color: white;
+            font-weight: bold;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
