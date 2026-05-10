@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starter Pack</title>
+    <link rel="stylesheet" href="n.css">
+</head>
+
+<body>
+
+    <header>
+        <text>
+        <h1>Hello World</h1>
+        <p>This is your first HTML starter pack.</p>
+          <center>
+    <input class="u" type="text" placeholder="enter your email">
+        <input class="u" type="text" placeholder="enter the password">
+          </center>
+        <a href="">Don’t have an account? Sign up.</a>
+        <h4><input type="checkbox"><label for="checkbox">I agree to the User Agreement and Privacy Policy.</label></h4>
+      
+        </text>
+    </header>
+    <main>
+        <button class="join">войти</button>
+        <h1>
+            <button class="clim">нажми</button>
+    </main>
+    <card>
+        <helper>
+            <div class="f">
+                <div class="support">support</div>
+                <div class="about">about us</div>
+                <div class="reviews">reviews</div>
+            </div>
+
+        </helper>
+    </card>
+</body>
+<script>
+    const divSupport = document.querySelector('.support');
+    const divAbout = document.querySelector('.about');
+    const divReviews = document.querySelector('.reviews')
+
+    divSupport.addEventListener('click', () => {
+        window.location.href = './support.html';
+    });
+
+    divAbout.addEventListener('click', () => {
+        window.location.href = './about.html';
+    });
+
+    divReviews.addEventListener('click', () => {
+        window.location.href = './reviews.html';
+    });
+
+
+    const button = document.querySelector('.join');
+    button.addEventListener('click', () => {
+        window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+        setTimeout(() => {
+            alert('Затролен ,папхапхахпхахпхапхахпхап');
+        }, 2000);
+    });
+
+    const audio = new Audio('https://www.image2url.com/r2/default/files/1778187384787-80de0564-93fe-4519-8203-683e809ff5d6.mp3');
+    audio.preload = 'auto';
+
+    const clim = document.querySelector('.clim');
+    clim.addEventListener('click', () => {
+        audio.play()
+    });
+</script>
+
+
+</body>
+
+</html>
